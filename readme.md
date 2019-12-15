@@ -1,7 +1,7 @@
 ## concurency z parallelism
 
 
-Concurency = one task at time but multiple functions
+Concurency = one task at time but multiple functions. Go channels always run asynchronously. To opn new thread we use go routines 
 
 Paralelism =  multiple tasks at time (one therad of execution)
 
