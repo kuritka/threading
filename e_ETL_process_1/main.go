@@ -9,6 +9,15 @@ import (
 )
 
 
+/*
+started...
+
+execution time 16.725224006s
+Process finished with exit code 0
+
+!!! and 20 miliseconds if we run that sequentially by passing returned values instead of channels
+ */
+
 type Product struct {
 	PartNumber string
 	UnitCost float64
