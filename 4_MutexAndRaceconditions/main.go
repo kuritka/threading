@@ -6,11 +6,9 @@ import (
 	"time"
 )
 
-
-
 var i = 0
 
-func worker(wg *sync.WaitGroup, m *sync.Mutex){
+func worker(wg *sync.WaitGroup, m *sync.Mutex) {
 
 	// at this point is problem: If two threads execute i = i+1 at the same time, both has same initial value for i,
 	// they ignores fact that one of thread would increment value of i first and second would start with incremented i.
@@ -25,15 +23,13 @@ func worker(wg *sync.WaitGroup, m *sync.Mutex){
 	wg.Done()
 }
 
-
-func main(){
+func main() {
 
 	start := time.Now()
 
-
 	wg := sync.WaitGroup{}
 	m := sync.Mutex{}
-	for x := 0; x < 1000; x ++ {
+	for x := 0; x < 1000; x++ {
 		//wg.add must be within main thread, not in go routine.
 		//the issue is that add will be called at the same time as wait which leads to runtime errors.
 		wg.Add(1)
@@ -42,7 +38,7 @@ func main(){
 
 	wg.Wait()
 
-	fmt.Printf("\nValue i is %v ",i)
+	fmt.Printf("\nValue i is %v ", i)
 
 	fmt.Printf("\nexecution time %s", time.Since(start))
 }
